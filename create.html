@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un Souvenir - Souvenirs Éternels</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Création de votre espace souvenir</h1>
+    </header>
+
+    <main>
+        <form id="souvenir-form">
+            <h2>Informations sur le défunt</h2>
+            <label for="name">Nom complet :</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="birthdate">Date de naissance :</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+
+            <label for="deathdate">Date de décès :</label>
+            <input type="date" id="deathdate" name="deathdate" required>
+
+            <h2>Contenu du souvenir</h2>
+            <label for="message">Message ou biographie :</label>
+            <textarea id="message" name="message" rows="8"></textarea>
+
+            <label for="photos">Ajouter des photos :</label>
+            <input type="file" id="photos" name="photos" multiple accept="image/*">
+
+            <label for="videos">Ajouter une vidéo :</label>
+            <input type="file" id="videos" name="videos" accept="video/*">
+
+            <button type="submit">Générer l'aperçu du souvenir</button>
+        </form>
+        <div id="loading" class="loading-container" style="display: none;">
+            <div class="spinner"></div>
+            <p>Chargement en cours, veuillez patienter...</p>
+        </div>
+
+        <div id="result" style="display: none;">
+            <h2>Votre Souvenir a été créé avec succès !</h2>
+            <p>Voici le code QR unique pour accéder à ce mémorial. Vous pouvez maintenant le scanner avec votre téléphone pour le tester.</p>
+            <div id="qrcode"></div>
+            <p><strong>Lien direct :</strong> <a id="souvenir-link" href="#" target="_blank"></a></p>
+            <hr>
+            <h3>Étape suivante : Commander votre plaque commémorative</h3>
+            <p>Cliquez sur le bouton ci-dessous pour finaliser votre commande et recevoir votre plaque personnalisée avec ce code QR gravé.</p>
+            <a href="#" class="cta-button">Commander la plaque</a> <!-- Ce lien sera à configurer vers votre page de paiement -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Souvenirs Éternels. Tous droits réservés.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script type="module" src="js/create.js"></script>
+</body>
+</html>

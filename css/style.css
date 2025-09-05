@@ -1,0 +1,186 @@
+/* Styles généraux */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header, footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Page d'accueil */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #5c67f2;
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #4a54e1;
+}
+
+/* Formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="date"],
+form textarea,
+form input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box; /* Important */
+}
+
+form button {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+/* Page Souvenir */
+#souvenir-content {
+    text-align: center;
+    padding: 20px 40px;
+}
+
+#souvenir-content h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    color: #2c3e50;
+}
+
+#souvenir-content .dates {
+    font-style: italic;
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
+
+#souvenir-content .message {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    text-align: justify;
+    white-space: pre-wrap; /* Respecte les sauts de ligne */
+}
+
+.main-video {
+    margin: 30px 0;
+}
+
+.main-video video {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+#souvenir-content .gallery {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+#souvenir-content .gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#souvenir-content .gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Section Résultat et QR Code */
+#result {
+    text-align: center;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#qrcode {
+    margin: 20px auto;
+    padding: 10px;
+    background: white;
+    border: 1px solid #eee;
+    display: inline-block;
+}
+
+#souvenir-link {
+    word-break: break-all;
+}
+
+/* Spinner de chargement */
+.loading-container {
+    text-align: center;
+    padding: 40px;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: #5c67f2;
+    margin: 0 auto 10px auto;
+
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
