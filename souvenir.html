@@ -1,20 +1,42 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>En mémoire de...</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <main id="souvenir-content">
-        <!-- Le contenu sera injecté ici par JavaScript -->
-    </main>
+    <div class="souvenir-container">
+        <header class="souvenir-header">
+            <!-- Le contenu du header sera injecté ici -->
+        </header>
 
-    <footer>
-        <p>&copy; 2025 Souvenirs Éternels. Tous droits réservés.</p>
-    </footer>
+        <main class="souvenir-body">
+            <section class="biography-section">
+                <h2>Son histoire</h2>
+                <p id="souvenir-message"></p>
+            </section>
+
+            <section class="media-section">
+                <div id="souvenir-video"></div>
+                <div id="souvenir-gallery" class="gallery"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Créé avec ❤️ par Souvenirs Éternels</p>
+        </footer>
+    </div>
+
+    <!-- Lightbox/Modal pour les images -->
+    <div id="lightbox-modal" class="modal">
+        <span class="close-button">&times;</span>
+        <img class="modal-content" id="lightbox-image">
+        <div id="caption"></div>
+    </div>
 
     <script type="module" src="js/souvenir.js"></script>
 </body>

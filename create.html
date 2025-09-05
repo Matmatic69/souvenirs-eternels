@@ -25,8 +25,12 @@
             <input type="date" id="deathdate" name="deathdate" required>
 
             <h2>Contenu du souvenir</h2>
-            <label for="message">Message ou biographie :</label>
+            <div class="label-container">
+                <label for="message">Message ou biographie :</label>
+                <button type="button" id="generate-ai-text" class="ai-button">Générer avec l'IA ✨</button>
+            </div>
             <textarea id="message" name="message" rows="8"></textarea>
+            <small id="ai-status" class="ai-status"></small>
 
             <label for="photos">Ajouter des photos :</label>
             <input type="file" id="photos" name="photos" multiple accept="image/*">

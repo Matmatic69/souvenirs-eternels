@@ -1,9 +1,58 @@
 import { db, storage } from './firebase-config.js';
+import { GEMINI_API_KEY } from './gemini-config.js';
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
 
 const form = document.getElementById('souvenir-form');
 const loading = document.getElementById('loading');
+const generateButton = document.getElementById('generate-ai-text');
+const messageTextarea = document.getElementById('message');
+const aiStatus = document.getElementById('ai-status');
+
+// --- Logique de génération de texte par IA ---
+generateButton.addEventListener('click', async () => {
+    const name = form.name.value;
+    const birthdate = form.birthdate.value;
+    const deathdate = form.deathdate.value;
+
+    if (!name || !birthdate || !deathdate) {
+        alert('Veuillez remplir le nom et les dates avant de générer un texte.');
+        return;
+    }
+
+    aiStatus.textContent = 'Génération en cours...';
+    generateButton.disabled = true;
+
+    const prompt = `Rédige un court texte d'hommage touchant et poétique pour les funérailles de ${name}, né(e) le ${birthdate} et décédé(e) le ${deathdate}. Le ton doit être réconfortant et célébrer la vie de la personne. Ne mentionne pas "funérailles" dans le texte.`;
+
+    try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: prompt }] }],
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur de l'API Gemini: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const generatedText = data.candidates[0].content.parts[0].text;
+        messageTextarea.value = generatedText;
+        aiStatus.textContent = 'Texte généré avec succès !';
+
+    } catch (error) {
+        console.error('Erreur lors de la génération de texte par IA:', error);
+        aiStatus.textContent = 'Erreur lors de la génération.';
+        alert('Désolé, une erreur est survenue. Veuillez réessayer.');
+    } finally {
+        generateButton.disabled = false;
+    }
+});
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
